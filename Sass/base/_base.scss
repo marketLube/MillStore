@@ -43,3 +43,18 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+// For input fields and selectable text, add this to allow selection
+input,
+textarea,
+select {
+  -webkit-user-select: text;
+  user-select: text;
+}

@@ -4,3 +4,12 @@
 
 @use "layout/header";
 @use "utils/prefixes";
+@use "page/Homepage/Carousel";
+@use "page/Homepage/Clearance";
+@use "page/Homepage/Bestseller";
+@use "page/Homepage/Offer";
+@use "page/Homepage/Trending";
+@use "components/card";
+@use "components/Footer";
+@use "page/Productpage/Allproducts";
+@use "page/Productpage/ProductDetails";

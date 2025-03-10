@@ -1,11 +1,9 @@
-import { Outlet } from "react-router-dom";
-import Header from "./Layout/Header";
-
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/router";
 function App() {
   return (
     <div className="app-container">
-      <Header />
-      <Outlet />
+      <RouterProvider router={router} />
     </div>
   );
 }
