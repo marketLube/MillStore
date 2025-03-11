@@ -84,7 +84,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: darken(white, 5%);
+          background-color: white;
           transform: translateY(-2px);
         }
       }

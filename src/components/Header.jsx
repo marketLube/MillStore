@@ -100,7 +100,7 @@ export default function Header() {
             {isUserMenuOpen && (
               <div className={`user-menu ${isUserMenuOpen ? "active" : ""}`}>
                 <Link
-                  to="/profile"
+                  to="/profile?tab=personal-info"
                   className="user-menu-header"
                   onClick={handleMenuItemClick}
                 >
@@ -116,7 +116,7 @@ export default function Header() {
 
                 <div className="user-menu-items">
                   <Link
-                    to="/saved-address"
+                    to="/profile?tab=saved-address"
                     className="menu-item"
                     onClick={handleMenuItemClick}
                   >
@@ -124,7 +124,7 @@ export default function Header() {
                     <span>Saved Address</span>
                   </Link>
                   <Link
-                    to="/orders"
+                    to="/profile?tab=order-history"
                     className="menu-item"
                     onClick={handleMenuItemClick}
                   >
@@ -132,7 +132,7 @@ export default function Header() {
                     <span>Order status</span>
                   </Link>
                   <Link
-                    to="/support"
+                    to="/profile?tab=help-support"
                     className="menu-item"
                     onClick={handleMenuItemClick}
                   >
@@ -140,7 +140,7 @@ export default function Header() {
                     <span>Help & support</span>
                   </Link>
                   <Link
-                    to="/logout"
+                    to="/login"
                     className="menu-item logout"
                     onClick={handleMenuItemClick}
                   >
@@ -152,11 +152,12 @@ export default function Header() {
             )}
           </div>
           <div className="header-actions-item">
-            <FiShoppingCart className="icon" />
+            <Link to="/cart">
+              <FiShoppingCart className="icon" />
+            </Link>
           </div>
         </div>
 
-        {/* Mobile Search Overlay */}
         <div
           className={`mobile-search-overlay ${isSearchOpen ? "active" : ""}`}
         >

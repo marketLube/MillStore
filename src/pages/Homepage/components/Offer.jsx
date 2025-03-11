@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Offer() {
   return (
     <div className="offer-container">
@@ -15,7 +15,9 @@ function Offer() {
             <span className="discount">Flat 25% Off</span>
             <span className="limited">Limited Time Offer</span>
           </div>
-          <button className="explore-btn">Explore</button>
+          <Link to="/product" className="explore-btn">
+            Explore
+          </Link>
         </div>
         <div className="offer-image">
           <img src="/images/offer/offer.png" alt="Kitchen Cookware Set" />

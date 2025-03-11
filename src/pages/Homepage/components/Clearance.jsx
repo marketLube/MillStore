@@ -5,6 +5,7 @@ import {
   FiArrowRight,
   FiArrowRight as ViewAllIcon,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Clearance() {
   const scrollContainerRef = useRef(null);
@@ -104,9 +105,9 @@ function Clearance() {
             Get amazing deals on our top-rated products
           </p>
         </div>
-        <span className="view-all desktop-view-all">
+        <Link to="/product" className="view-all desktop-view-all">
           View All <ViewAllIcon />
-        </span>
+        </Link>
       </div>
       <div className="clearance-products-wrapper">
         <button
@@ -127,9 +128,9 @@ function Clearance() {
           <FiArrowRight />
         </button>
       </div>
-      <span className="view-all mobile-view-all">
+      <Link to="/product" className="view-all mobile-view-all">
         View All <ViewAllIcon />
-      </span>
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as var;
 @use "../../base/responive" as responsive;
+@use "sass:color";
 
 .bestseller-container {
   padding: var.$default-padding;
@@ -160,7 +161,10 @@
             color: white;
 
             &:hover {
-              background-color: darken(var.$color-primary, 5%);
+              background-color: color.scale(
+                var.$color-primary,
+                $lightness: -10%
+              );
             }
           }
         }

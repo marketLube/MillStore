@@ -1,7 +1,7 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 import Card from "../../../components/Card";
-
+import { Link } from "react-router-dom";
 const trendingProducts = [
   {
     id: 1,
@@ -103,7 +103,7 @@ function Trending() {
 
       <div className="trending-footer">
         <p>Don't miss out! Explore all trending styles</p>
-        <a href="/trending">Shop all →</a>
+        <Link to="/product">Shop all →</Link>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function Card({
   image,
@@ -11,9 +12,11 @@ function Card({
   discount,
   width,
   height,
+  id,
 }) {
+  const navigate = useNavigate();
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={() => navigate(`/product/${id}`)}>
       <div className="product-card_image">
         {discount && <span className="discount-tag">{discount}</span>}
         <img src={image} alt={title} />

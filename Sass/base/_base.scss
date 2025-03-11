@@ -7,6 +7,10 @@
   margin: 0;
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
+}
+
+// Separate rule for hiding scrollbars
+*:not(.coupon-list) {
   @include mixins.removeScrollbar;
 }
 
@@ -21,23 +25,10 @@ main {
   max-width: 1800px;
   margin: 0 auto;
 }
-header {
-}
-
-.section-container {
-}
-section {
-}
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
-}
-
-::-webkit-scrollbar-track {
-}
-
-::-webkit-scrollbar-thumb {
 }
 
 ::-webkit-scrollbar-thumb:hover {

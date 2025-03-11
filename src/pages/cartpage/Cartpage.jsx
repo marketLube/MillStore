@@ -1,5 +1,72 @@
 import React, { useState } from "react";
-import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
+import {
+  FiMinus,
+  FiPlus,
+  FiTrash2,
+  FiChevronDown,
+  FiChevronUp,
+} from "react-icons/fi";
+import AddressModal from "../../components/cart/Addressmodal";
+
+// Add this array of coupons
+const availableCoupons = [
+  {
+    id: "MILL20",
+    code: "MILL20",
+    description: "Flat 20% off on ₹1999 and above.",
+    terms: "Grab the deal now!",
+    isHighlighted: true,
+  },
+  {
+    id: "FREESHIP",
+    code: "FREESHIP",
+    description: "Free shipping on ₹799 and above.",
+    terms: "Enjoy the savings!",
+    isHighlighted: false,
+  },
+  {
+    id: "FIRST50",
+    code: "FIRST50",
+    description: "₹50 off on your first order.",
+    terms: "New users only!",
+    isHighlighted: false,
+  },
+  {
+    id: "TOOLS25",
+    code: "TOOLS25",
+    description: "25% off on all power tools.",
+    terms: "Limited time offer!",
+    isHighlighted: false,
+  },
+  {
+    id: "EXTRA10",
+    code: "EXTRA10",
+    description: "Extra 10% off on orders above ₹2499.",
+    terms: "T&C Apply",
+    isHighlighted: false,
+  },
+  {
+    id: "EXTRA10",
+    code: "EXTRA10",
+    description: "Extra 10% off on orders above ₹2499.",
+    terms: "T&C Apply",
+    isHighlighted: false,
+  },
+  {
+    id: "EXTRA10",
+    code: "EXTRA10",
+    description: "Extra 10% off on orders above ₹2499.",
+    terms: "T&C Apply",
+    isHighlighted: false,
+  },
+  {
+    id: "EXTRA10",
+    code: "EXTRA10",
+    description: "Extra 10% off on orders above ₹2499.",
+    terms: "T&C Apply",
+    isHighlighted: false,
+  },
+];
 
 function Cartpage() {
   const [cart, setCart] = useState([
@@ -27,6 +94,8 @@ function Cartpage() {
   ]);
 
   const [couponCode, setCouponCode] = useState("");
+  const [showCoupons, setShowCoupons] = useState(false);
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -98,9 +167,8 @@ function Cartpage() {
         </div>
 
         <div className="order-summary">
-          <h2>Order Summary</h2>
-
           <div className="summary-details">
+            <h2>Order Summary</h2>
             <div className="summary-row">
               <span>Subtotal</span>
               <span>₹ {subtotal}</span>
@@ -127,9 +195,13 @@ function Cartpage() {
               <span>Total</span>
               <span>₹ 8,983</span>
             </div>
+            <button
+              className="proceed-btn"
+              onClick={() => setIsAddressModalOpen(true)}
+            >
+              Proceed
+            </button>
           </div>
-
-          <button className="proceed-btn">Proceed</button>
 
           <div className="coupon-section">
             <h3>Apply Coupons & Save</h3>
@@ -145,34 +217,39 @@ function Cartpage() {
           </div>
 
           <div className="available-coupons">
-            <h3>Available Coupons</h3>
-            <div className="coupon-list">
-              <div className="coupon-item">
-                <input type="radio" name="coupon" id="MILL20" />
-                <label htmlFor="MILL20">
-                  <div className="coupon-header">
-                    <span className="orange-dot"></span>
-                    <strong>MILL20</strong>
-                  </div>
-                  <p>Flat 20% off on ₹1999 and above.</p>
-                  <p className="terms">Grab the deal now!</p>
-                </label>
-              </div>
-              <div className="coupon-item">
-                <input type="radio" name="coupon" id="FREESHIP" />
-                <label htmlFor="FREESHIP">
-                  <div className="coupon-header">
-                    <span className="radio-circle"></span>
-                    <strong>FREESHIP</strong>
-                  </div>
-                  <p>Free shipping on ₹799 and above.</p>
-                  <p className="terms">Enjoy the savings!</p>
-                </label>
-              </div>
+            <div
+              className="coupon-header"
+              onClick={() => setShowCoupons(!showCoupons)}
+            >
+              <h3>Available Coupons</h3>
+              {showCoupons ? (
+                <FiChevronUp className="mobile-icon" />
+              ) : (
+                <FiChevronDown className="mobile-icon" />
+              )}
+            </div>
+            <div className={`coupon-list ${showCoupons ? "show" : ""}`}>
+              {availableCoupons.map((coupon) => (
+                <div className="coupon-item" key={coupon.id}>
+                  <label htmlFor={coupon.id}>
+                    <div className="coupon-header">
+                      <input type="radio" name="coupon" id={coupon.id} />
+                      <strong>{coupon.code}</strong>
+                    </div>
+                    <p>{coupon.description}</p>
+                    <p className="terms">{coupon.terms}</p>
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      <AddressModal
+        isOpen={isAddressModalOpen}
+        onClose={() => setIsAddressModalOpen(false)}
+      />
     </div>
   );
 }

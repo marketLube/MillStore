@@ -1,11 +1,15 @@
+@use "../../abstract/variables" as var;
+@use "sass:color";
+
 .profile-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 
   .breadcrumb {
     color: #666;
     margin-bottom: 1.5rem;
+    font-size: 0.875rem;
 
     a {
       color: inherit;
@@ -16,15 +20,6 @@
       }
     }
   }
-
-  .welcome-text {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-
-    .username {
-      color: #ffa500;
-    }
-  }
 }
 
 .profile-container {
@@ -32,31 +27,31 @@
   gap: 2rem;
 
   .sidebar {
-    width: 250px;
+    width: 200px;
 
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
 
       li {
-        padding: 1rem;
+        padding: 0.75rem;
         cursor: pointer;
+        color: #666;
+        font-size: 0.875rem;
 
         &.active {
-          font-weight: 600;
+          color: var.$color-primary;
+          font-weight: 500;
         }
 
         a {
           text-decoration: none;
           color: inherit;
-
-          &.logout {
-            color: #ff4444;
-          }
         }
 
         &:hover {
-          background: #f5f5f5;
+          color: var.$color-primary;
         }
       }
     }
@@ -64,6 +59,19 @@
 
   .profile-content {
     flex: 1;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      font-weight: normal;
+
+      .username {
+        color: var.$color-primary;
+      }
+    }
 
     .profile-picture-section {
       display: flex;
@@ -72,43 +80,30 @@
       margin-bottom: 2rem;
 
       .profile-picture {
-        position: relative;
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
 
         img {
           width: 100%;
           height: 100%;
-          border-radius: 50%;
           object-fit: cover;
-        }
-
-        .remove-photo {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #fff;
-          border: 1px solid #ddd;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
       }
 
       .upload-btn {
         padding: 0.5rem 1rem;
-        border: 1px solid #ffa500;
-        color: #ffa500;
-        background: transparent;
+        border: 1px solid #ddd;
+        background: white;
+        color: #666;
         border-radius: 4px;
         cursor: pointer;
+        font-size: 0.875rem;
 
         &:hover {
-          background: #fff5e6;
+          border-color: var.$color-primary;
+          color: var.$color-primary;
         }
       }
     }
@@ -119,7 +114,8 @@
       label {
         display: block;
         margin-bottom: 0.5rem;
-        font-weight: 500;
+        color: #666;
+        font-size: 0.875rem;
       }
 
       input {
@@ -127,58 +123,52 @@
         padding: 0.75rem;
         border: 1px solid #ddd;
         border-radius: 4px;
+        font-size: 0.875rem;
 
         &:focus {
           outline: none;
-          border-color: #ffa500;
+          border-color: var.$color-primary;
         }
       }
 
       .whatsapp-note {
         display: block;
         color: #666;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         margin-top: 0.5rem;
       }
     }
 
     .form-footer {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 1rem;
+      justify-content: flex-end;
       margin-top: 2rem;
 
-      .required-note {
-        color: #666;
+      button {
+        padding: 0.625rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
         font-size: 0.875rem;
-      }
 
-      .button-group {
-        display: flex;
-        gap: 1rem;
+        &.cancel-btn {
+          background: white;
+          border: 1px solid #ddd;
+          color: #666;
 
-        button {
-          padding: 0.75rem 1.5rem;
-          border-radius: 4px;
-          cursor: pointer;
-
-          &.cancel-btn {
-            background: transparent;
-            border: 1px solid #ddd;
-
-            &:hover {
-              background: #f5f5f5;
-            }
+          &:hover {
+            border-color: var.$color-primary;
+            color: var.$color-primary;
           }
+        }
 
-          &.save-btn {
-            background: #ffa500;
-            color: white;
-            border: none;
+        &.save-btn {
+          background: var.$color-primary;
+          color: white;
+          border: none;
 
-            &:hover {
-              background: darken(#ffa500, 5%);
-            }
+          &:hover {
+            background: color.scale(var.$color-primary, $lightness: -10%);
           }
         }
       }
@@ -187,141 +177,50 @@
 }
 
 .required {
-  color: #ff4444;
+  color: var.$color-primary;
 }
 
 @media (max-width: 768px) {
-  .profile-page {
-    padding: 1rem;
-
-    .breadcrumb {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .welcome-text {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  }
-
   .profile-container {
     flex-direction: column;
     gap: 1rem;
 
     .sidebar {
       width: 100%;
-      margin-bottom: 1rem;
+      background: white;
+      border-radius: 8px;
+      padding: 0.5rem;
 
       ul {
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         li {
-          padding: 0.75rem;
-          border-bottom: 1px solid #eee;
-          font-size: 0.95rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          &:after {
-            content: "›";
-            color: #999;
-            font-size: 1.2rem;
-          }
-
-          &.active {
-            color: #ffa500;
-            font-weight: 500;
-
-            &:after {
-              color: #ffa500;
-            }
-          }
-
-          a {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            &.logout {
-              color: #ff4444;
-
-              &:after {
-                color: #ff4444;
-              }
-            }
-          }
+          padding: 0.75rem 1rem;
         }
       }
     }
 
     .profile-content {
+      padding: 1rem;
+
       .profile-picture-section {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        margin-bottom: 1.5rem;
-
-        .profile-picture {
-          margin-bottom: 0.5rem;
-        }
-
-        .upload-btn {
-          width: 100%;
-          max-width: 200px;
-          padding: 0.75rem;
-        }
-      }
-
-      .form-group {
-        margin-bottom: 1.25rem;
-
-        label {
-          font-size: 0.9rem;
-        }
-
-        input {
-          padding: 0.875rem;
-          font-size: 0.95rem;
-        }
-
-        .whatsapp-note {
-          font-size: 0.8rem;
-        }
       }
 
       .form-footer {
         flex-direction: column;
-        gap: 1rem;
-        margin-top: 1.5rem;
 
-        .required-note {
-          text-align: center;
-          font-size: 0.8rem;
-        }
-
-        .button-group {
+        button {
           width: 100%;
-          flex-direction: column;
-          gap: 0.75rem;
-
-          button {
-            width: 100%;
-            padding: 0.875rem;
-            font-size: 0.95rem;
-
-            &.cancel-btn {
-              order: 2;
-            }
-
-            &.save-btn {
-              order: 1;
-            }
-          }
         }
       }
     }

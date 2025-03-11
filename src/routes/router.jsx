@@ -5,11 +5,21 @@ import AllProducts from "../pages/productpage/Allproducts";
 import ProductDetails from "../pages/productpage/ProductDetails";
 import Profile from "../pages/profile/Profile";
 import Cartpage from "../pages/cartpage/Cartpage";
+import Login from "../pages/Loginpage/Login";
+import Signup from "../pages/Signuppage/Signup";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Userlayout />,
     children: [
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/",
         element: <Homepage />,

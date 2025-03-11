@@ -4,7 +4,7 @@ import {
   FiArrowRight,
   FiArrowRight as ViewAllIcon,
 } from "react-icons/fi";
-
+import { Link } from "react-router-dom";
 function Bestseller() {
   const bestsellerProducts = [
     {
@@ -54,9 +54,9 @@ function Bestseller() {
         <h3>
           Our Best Sellers- <span>Loved By Thousands</span>
         </h3>
-        <span className="view-all desktop-view-all">
+        <Link to="/product" className="view-all desktop-view-all">
           View All <ViewAllIcon />
-        </span>
+        </Link>
       </div>
       <div className="bestseller-content">
         <div className="bestseller-image-wrapper">
@@ -92,9 +92,9 @@ function Bestseller() {
           </div>
         </div>
       </div>
-      <span className="view-all mobile-view-all">
+      <Link to="/product" className="view-all mobile-view-all">
         View All <ViewAllIcon />
-      </span>
+      </Link>
     </div>
   );
 }
